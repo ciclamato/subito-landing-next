@@ -107,6 +107,67 @@ body {
   animation: fadeUp 1s 2s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
+.hero-claim {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-weight: 600;
+  margin-bottom: 2rem;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, var(--cream), var(--purple-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.shortcut-circles {
+  display: flex;
+  justify-content: center;
+  gap: clamp(1rem, 4vw, 2.5rem);
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.shortcut-circle {
+  width: clamp(100px, 22vw, 140px);
+  height: clamp(100px, 22vw, 140px);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
+  border: 1.5px solid var(--dark-border);
+  background: var(--dark-card);
+  transition: border-color 0.4s, transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  gap: 0.2rem;
+  padding: 1rem;
+  box-shadow: 0 0 40px rgba(123,45,142,0.06);
+}
+
+.shortcut-circle span {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(0.6rem, 1.5vw, 0.72rem);
+  font-weight: 600;
+  color: var(--cream);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.shortcut-circle:hover {
+  border-color: var(--purple-light);
+  box-shadow: 0 0 60px rgba(123,45,142,0.18), 0 0 20px rgba(123,45,142,0.08);
+}
+
+@media (max-width: 768px) {
+  .shortcut-circle {
+    width: clamp(90px, 28vw, 120px);
+    height: clamp(90px, 28vw, 120px);
+  }
+}
+
 .hero-stats {
   display: flex;
   gap: 3rem;
@@ -805,6 +866,10 @@ footer {
   gap: 3rem;
 }
 
+.footer-office {
+  text-align: center;
+}
+
 .footer-office-city {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 0.9rem;
@@ -866,6 +931,39 @@ footer {
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* WHATSAPP FLOATING */
+.whatsapp-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 50;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #25D366;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(37,211,102,0.35);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: wpPulse 2s ease-in-out infinite;
+}
+
+.whatsapp-btn:hover {
+  transform: scale(1.12);
+  box-shadow: 0 6px 24px rgba(37,211,102,0.5);
+}
+
+@keyframes wpPulse {
+  0%, 100% { box-shadow: 0 4px 16px rgba(37,211,102,0.35); }
+  50% { box-shadow: 0 4px 28px rgba(37,211,102,0.55); }
+}
+
+/* FIX PHOTO ORIENTATION */
+.pcard-slide img {
+  image-orientation: from-image;
 }
 
 /* RESPONSIVE */

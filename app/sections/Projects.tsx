@@ -3,7 +3,7 @@ import { projects } from "../data";
 
 export default function Projects() {
   return (
-    <section className="projects">
+    <section className="projects" id="proyectos">
       <div className="projects-header reveal">
         <div className="section-label">Portfolio</div>
         <h2 className="section-title">

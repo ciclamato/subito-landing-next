@@ -2,7 +2,7 @@ import { dtiProducts } from "../data";
 
 export default function DtiProducts() {
   return (
-    <section className="dti">
+    <section className="dti" id="dti">
       <div className="dti-header reveal">
         <div className="section-label">Soluciones digitales</div>
         <h2 className="section-title">

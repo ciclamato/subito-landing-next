@@ -2,7 +2,7 @@ import { areas } from "../data";
 
 export default function Areas() {
   return (
-    <section className="areas">
+    <section className="areas" id="areas">
       <div className="areas-header reveal">
         <div className="section-label">Áreas de trabajo</div>
         <h2 className="section-title">
