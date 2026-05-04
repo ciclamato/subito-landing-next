@@ -1,24 +1,14 @@
 # dependencies
 node_modules/
 
-# next.js
-.next/
-out/
+# build
 dist/
+.next/
 
-# production
-build/
+# large assets — use Git LFS (git lfs track "public/**/*.{jpg,jpeg,png,mp4,glb}")
+public/videos/
+public/trophy.glb
 
-# local env files
-.env*.local
+# env
 .env
-
-# logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-
-# misc
-.DS_Store
-*.pem
+*.log
