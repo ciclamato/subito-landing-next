@@ -1,21 +1,8 @@
 "use client";
 
-import { useEffect, Suspense } from "react";
-import dynamic from "next/dynamic";
+import { useEffect } from "react";
 import { awards } from "../data";
-
-const Trophy3D = dynamic(() => import("../components/Trophy3D"), {
-  ssr: false,
-  loading: () => (
-    <div className="award-trophy-card">
-      <img
-        src="/images/premio.png"
-        alt="Premio SOL 2024"
-        style={{ height: 180, borderRadius: 12 }}
-      />
-    </div>
-  ),
-});
+import TiltCard from "../components/TiltCard";
 
 export default function Awards() {
   useEffect(() => {
@@ -33,8 +20,14 @@ export default function Awards() {
 
   return (
     <>
-      <div className="award-trophy reveal" style={{ display: 'flex', justifyContent: 'center' }}>
-        <Trophy3D />
+      <div className="award-trophy reveal">
+        <TiltCard>
+          <img
+            src="/images/premio.png"
+            alt="Premio SOL 2024"
+            className="award-trophy-img"
+          />
+        </TiltCard>
       </div>
       <div className="awards-marquee">
         <div className="marquee-track">
@@ -52,7 +45,7 @@ export default function Awards() {
                   {award.status === "won" ? "Ganador" : "Finalista"}
                 </span>
               </span>
-              <span className="marquee-separator">&#9671;</span>
+              <span className="marquee-separator">{'\u25C7'}</span>
             </span>
           ))}
           {/* Duplicate set for seamless loop */}
@@ -70,7 +63,7 @@ export default function Awards() {
                   {award.status === "won" ? "Ganador" : "Finalista"}
                 </span>
               </span>
-              <span className="marquee-separator">&#9671;</span>
+              <span className="marquee-separator">{'\u25C7'}</span>
             </span>
           ))}
         </div>

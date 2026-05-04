@@ -166,44 +166,34 @@ body {
   display: flex;
   justify-content: center;
   padding: 3rem 2rem 1.5rem;
+  position: relative;
 }
 
-.award-trophy-card {
-  display: inline-block;
-  border-radius: 16px;
-  overflow: hidden;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  cursor: pointer;
+.award-trophy::after {
+  content: '';
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 280px;
+  height: 60px;
+  background: radial-gradient(ellipse 60% 100% at 50% 100%, rgba(201,168,76,0.25) 0%, rgba(201,168,76,0.08) 40%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
 }
 
-.award-trophy-card:hover {
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 16px 64px rgba(201,168,76,0.2), 0 0 120px rgba(123,45,142,0.1);
-}
-
-.award-trophy-card:active {
-  transform: translateY(-2px) scale(0.99);
-}
-
-.award-trophy img {
+.award-trophy-img {
   height: 180px;
   width: auto;
   display: block;
-  border: 1px solid rgba(201,168,76,0.2);
   border-radius: 12px;
   box-shadow: 0 8px 40px rgba(201,168,76,0.1), 0 0 80px rgba(123,45,142,0.06);
   filter: saturate(1.05);
-  transition: border-color 0.4s;
-}
-
-.award-trophy-card:hover img {
-  border-color: rgba(201,168,76,0.5);
 }
 
 @media (max-width: 768px) {
   .award-trophy { padding: 2rem 1.25rem 1rem; }
-  .award-trophy img { height: 140px; }
+  .award-trophy-img { height: 140px; }
 }
 
 /* AWARDS MARQUEE */

@@ -1,8 +1,8 @@
 "use client";
 
-import { useRef, Suspense } from "react";
+import { useRef, Suspense, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { useGLTF, Environment, ContactShadows } from "@react-three/drei";
+import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 
 function Model() {
@@ -10,64 +10,54 @@ function Model() {
   const ref = useRef<THREE.Group>(null);
 
   useFrame((_, delta) => {
-    if (ref.current) {
-      ref.current.rotation.y += delta * 0.15;
-    }
+    if (ref.current) ref.current.rotation.y += delta * 0.12;
   });
 
   scene.traverse((child) => {
     if ((child as THREE.Mesh).isMesh) {
       const mesh = child as THREE.Mesh;
-      if (Array.isArray(mesh.material)) {
-        mesh.material.forEach((mat) => {
-          if (mat instanceof THREE.MeshStandardMaterial) {
-            mat.metalness = 0.9;
-            mat.roughness = 0.35;
-            mat.envMapIntensity = 0.8;
-          }
-        });
-      } else if (mesh.material instanceof THREE.MeshStandardMaterial) {
-        mesh.material.metalness = 0.9;
-        mesh.material.roughness = 0.35;
-        mesh.material.envMapIntensity = 0.8;
-      }
+      const mats = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
+      mats.forEach((mat) => {
+        if (mat instanceof THREE.MeshStandardMaterial) {
+          mat.metalness = 0.85;
+          mat.roughness = 0.35;
+          mat.color = new THREE.Color("#d4b04a");
+        }
+      });
     }
   });
 
-  return <primitive ref={ref} object={scene} scale={1.4} />;
+  return <primitive ref={ref} object={scene} scale={0.9} />;
 }
 
 export default function Trophy3D() {
+  const [error, setError] = useState(false);
+  const [loaded, setLoaded] = useState(false);
+
+  if (error) return null;
+
   return (
-    <div className="award-trophy-card">
-      <div style={{ width: "min(320px, 80vw)", height: "min(340px, 80vw)" }}>
+    <div style={{ display: loaded ? "block" : "none" }}>
         <Canvas
-          camera={{ position: [0, 0.5, 3.2], fov: 35 }}
-          style={{ background: "transparent" }}
+          camera={{ position: [0, 0.5, 4], fov: 38 }}
+          style={{
+            width: "min(240px, 70vw)",
+            height: "min(240px, 70vw)",
+            background: "transparent",
+            margin: "0 auto",
+          }}
+          onCreated={() => setLoaded(true)}
+          onError={() => setError(true)}
         >
-          <ambientLight intensity={0.3} color="#fff" />
-          <directionalLight
-            position={[3, 4, 3]}
-            intensity={1.2}
-            color="#fff"
-          />
-          <directionalLight
-            position={[-2, 1, -1]}
-            intensity={0.5}
-            color="#FFD9A0"
-          />
-          <Environment preset="city" environmentIntensity={0.4} />
+          <ambientLight intensity={0.6} />
+          <directionalLight position={[2, 5, 3]} intensity={2.5} color="#fffbe6" />
+          <directionalLight position={[-2, 2, -3]} intensity={0.6} color="#ffd080" />
+          <pointLight position={[0, 3, 2]} intensity={1.0} color="#ffffff" />
+          <pointLight position={[0, 1, -2]} intensity={0.4} color="#ffe0a0" />
           <Suspense fallback={null}>
             <Model />
-            <ContactShadows
-              position={[0, -1, 0]}
-              opacity={0.3}
-              scale={4}
-              blur={3}
-            />
           </Suspense>
         </Canvas>
       </div>
-    </div>
   );
 }

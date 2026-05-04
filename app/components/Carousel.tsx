@@ -13,7 +13,7 @@ export default function Carousel({ images }: CarouselProps) {
     setCurrent(((index % images.length) + images.length) % images.length);
   };
 
-  if (!images.length) return <div className="pcard-placeholder">&#9670;</div>;
+  if (!images.length) return <div className="pcard-placeholder">{'\u25C6'}</div>;
 
   return (
     <div className="pcard-carousel">
@@ -32,14 +32,14 @@ export default function Carousel({ images }: CarouselProps) {
         onClick={() => goTo(current - 1)}
         aria-label="Anterior"
       >
-        &#8249;
+        {'\u2039'}
       </button>
       <button
         className="pcard-btn next"
         onClick={() => goTo(current + 1)}
         aria-label="Siguiente"
       >
-        &#8250;
+        {'\u203A'}
       </button>
       <div className="pcard-dots">
         {images.map((_, i) => (
