@@ -1,0 +1,27 @@
+export default function About() {
+  return (
+    <section className="about reveal">
+      <div className="section-label">Quiénes somos</div>
+      <h2 className="section-title">
+        Un laboratorio de ideas<br />entre dos continentes
+      </h2>
+      <p className="section-subtitle">
+        Originados en Madrid y con sede en Montevideo desde 2013, combinamos
+        narrativas tradicionales con tecnologías emergentes — Realidad Virtual,
+        Realidad Aumentada, sensores, robótica y 3D — para crear experiencias
+        memorables en museos, centros de interpretación y destinos turísticos.
+      </p>
+      <div className="origin-badges">
+        <div className="badge">
+          &#127466;&#127480; Origen <strong>Madrid</strong>
+        </div>
+        <div className="badge">
+          &#127482;&#127478; Sede <strong>Montevideo</strong>
+        </div>
+        <div className="badge">
+          &#127758; Proyectos en <strong>9 países</strong>
+        </div>
+      </div>
+    </section>
+  );
+}
