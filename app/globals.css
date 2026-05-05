@@ -207,16 +207,16 @@ body {
   justify-content: center;
   text-align: center;
   text-decoration: none;
-  background: linear-gradient(160deg, rgba(155,77,186,0.1) 0%, rgba(123,45,142,0.15) 50%, var(--dark-card) 100%);
-  border: 1.5px solid rgba(123,45,142,0.25);
+  background: linear-gradient(160deg, rgba(155,77,186,0.5) 0%, rgba(123,45,142,0.6) 50%, var(--dark-card) 100%);
+  border: 1.5px solid rgba(123,45,142,0.7);
   transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
   cursor: pointer;
   gap: 0.35rem;
   padding: 1.2rem;
   box-shadow:
-    0 8px 32px rgba(0,0,0,0.5),
-    0 0 0 1px rgba(123,45,142,0.12),
-    inset 0 1px 0 rgba(255,255,255,0.04);
+    0 8px 32px rgba(0,0,0,0.6),
+    0 0 0 1px rgba(123,45,142,0.7),
+    inset 0 1px 0 rgba(255,255,255,0.25);
   position: relative;
   overflow: hidden;
 }
@@ -255,7 +255,7 @@ body {
 .shortcut-icon {
   width: 32px;
   height: 32px;
-  opacity: 0.35;
+  opacity: 0.8;
   margin-bottom: 0.2rem;
   position: relative;
   z-index: 1;
@@ -264,7 +264,7 @@ body {
 }
 
 .shortcut-circle:hover .shortcut-icon {
-  opacity: 0.55;
+  opacity: 1;
 }
 
 .shortcut-item {
@@ -301,12 +301,12 @@ body {
 
 .shortcut-circle:hover {
   border-color: var(--purple-light);
-  background: linear-gradient(160deg, rgba(155,77,186,0.18) 0%, rgba(123,45,142,0.22) 50%, var(--dark-card) 100%);
+  background: linear-gradient(160deg, rgba(155,77,186,0.45) 0%, rgba(123,45,142,0.6) 50%, var(--dark-card) 100%);
   box-shadow:
     0 12px 48px rgba(0,0,0,0.6),
-    0 0 40px rgba(123,45,142,0.3),
-    0 0 0 1px rgba(123,45,142,0.35),
-    inset 0 1px 0 rgba(255,255,255,0.06);
+    0 0 40px rgba(123,45,142,0.6),
+    0 0 0 1px rgba(123,45,142,0.8),
+    inset 0 1px 0 rgba(255,255,255,0.25);
 }
 
 .shortcut-circle:active {
@@ -331,6 +331,15 @@ body {
   z-index: 10;
   animation: clickPulse 2.5s infinite ease-in-out;
   pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.click-hint-icon.dismissed {
+  opacity: 0 !important;
+}
+
+.shortcut-circle:hover .click-hint-icon {
+  opacity: 0;
 }
 
 .click-hint-icon svg {

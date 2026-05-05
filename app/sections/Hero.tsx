@@ -12,6 +12,7 @@ const shortcuts = [
 
 export default function Hero() {
   const [introDone, setIntroDone] = useState(false);
+  const [hintDismissed, setHintDismissed] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -73,13 +74,15 @@ export default function Hero() {
                 animate={introDone ? { opacity: 1, scale: 1 } : {}}
                 transition={{ delay: 0.5 + i * 0.2, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                 whileHover={{ scale: 1.08, borderColor: "var(--purple)" }}
+                onMouseEnter={() => setHintDismissed(true)}
+                onTouchStart={() => setHintDismissed(true)}
               >
                 <img src={s.icon} alt="" className="shortcut-icon" />
                 {s.label.split("\n").map((line, j) => (
                   <span key={j}>{line}</span>
                 ))}
                 {i === 2 && (
-                  <div className="click-hint-icon">
+                  <div className={`click-hint-icon ${hintDismissed ? "dismissed" : ""}`}>
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
                       <path d="M398-120q-27 0-51.5-11.5T305-164L46-483l26-25q19-19 45-22t47 12l116 81v-403q0-17 11.5-28.5T320-880q17 0 28.5 11.5T360-840v557l-111-78 118 146q6 7 14 11t17 4h282q33 0 56.5-23.5T760-280v-280q0-17 11.5-28.5T800-600q17 0 28.5 11.5T840-560v280q0 66-47 113t-113 47H398Zm122-240Zm-80-80v-240q0-17 11.5-28.5T480-720q17 0 28.5 11.5T520-680v240h-80Zm160 0v-200q0-17 11.5-28.5T640-680q17 0 28.5 11.5T680-640v200h-80Z"/>
                     </svg>
