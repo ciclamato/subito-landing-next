@@ -13,10 +13,10 @@ export default function About() {
       </p>
       <div className="origin-badges">
         <div className="badge">
-          🇪🇸 Origen <strong>Madrid</strong>
+          🇪🇸 Origen <strong>Madrid</strong><span className="badge-dim">, 1998</span>
         </div>
         <div className="badge">
-          🇺🇾 Sede <strong>Montevideo</strong>
+          🇺🇾 Sede <strong>Montevideo</strong><span className="badge-dim">, 2013</span>
         </div>
         <div className="badge">
           🌎 Proyectos en <strong>9 países</strong>

@@ -38,7 +38,6 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      <Awards />
       <About />
       <Areas />
       <DtiProducts />
@@ -60,7 +59,7 @@ export default function Home() {
         href="https://wa.me/59899504809"
         target="_blank"
         rel="noopener noreferrer"
-        className="whatsapp-btn"
+        className={`whatsapp-btn${showTopBtn ? " visible" : ""}`}
         aria-label="Contactar por WhatsApp"
       >
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="26" height="26">
