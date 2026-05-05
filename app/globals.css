@@ -98,7 +98,7 @@ body {
 .logo-brand-left,
 .logo-brand-right {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: clamp(2.2rem, 7vw, 4.5rem);
+  font-size: clamp(1.4rem, 4.5vw, 2.8rem);
   font-weight: 800;
   letter-spacing: -0.04em;
   line-height: 1;
@@ -146,12 +146,12 @@ body {
 
 .hero-claim {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: clamp(1.1rem, 2.8vw, 1.6rem);
-  font-weight: 600;
+  font-size: clamp(1.7rem, 4.2vw, 2.5rem);
+  font-weight: 700;
   margin-bottom: 1.25rem;
-  line-height: 1.25;
+  line-height: 1.15;
   letter-spacing: -0.02em;
-  background: linear-gradient(135deg, var(--cream), var(--purple-light));
+  background: linear-gradient(135deg, var(--cream) 30%, var(--purple-light));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -190,32 +190,32 @@ body {
 }
 
 .shortcut-circles {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(3, clamp(120px, 20vw, 150px));
   gap: clamp(1rem, 4vw, 2.5rem);
-  flex-wrap: wrap;
+  justify-content: center;
   margin-bottom: 1.5rem;
 }
 
 .shortcut-circle {
-  width: clamp(100px, 22vw, 140px);
-  height: clamp(100px, 22vw, 140px);
-  border-radius: 50%;
+  width: clamp(120px, 20vw, 150px);
+  height: clamp(120px, 20vw, 150px);
+  border-radius: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
   text-decoration: none;
-  background: radial-gradient(circle at 35% 30%, rgba(155,77,186,0.18) 0%, rgba(123,45,142,0.06) 40%, var(--dark-card) 100%);
-  border: 1.5px solid rgba(123,45,142,0.2);
-  transition: border-color 0.4s, transform 0.3s, box-shadow 0.3s, background 0.4s;
+  background: linear-gradient(160deg, rgba(155,77,186,0.1) 0%, rgba(123,45,142,0.15) 50%, var(--dark-card) 100%);
+  border: 1.5px solid rgba(123,45,142,0.25);
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
   cursor: pointer;
-  gap: 0.2rem;
-  padding: 1rem;
+  gap: 0.35rem;
+  padding: 1.2rem;
   box-shadow:
     0 8px 32px rgba(0,0,0,0.5),
-    0 0 0 1px rgba(123,45,142,0.08),
+    0 0 0 1px rgba(123,45,142,0.12),
     inset 0 1px 0 rgba(255,255,255,0.04);
   position: relative;
   overflow: hidden;
@@ -224,12 +224,11 @@ body {
 .shortcut-circle::before {
   content: '';
   position: absolute;
-  top: 12%;
-  left: 22%;
-  width: 30%;
-  height: 18%;
-  background: radial-gradient(ellipse at center, rgba(255,255,255,0.12) 0%, transparent 100%);
-  border-radius: 50%;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
   pointer-events: none;
 }
 
@@ -237,14 +236,14 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  border-radius: 50%;
-  background: radial-gradient(circle at 50% 50%, transparent 40%, rgba(0,0,0,0.3) 100%);
+  border-radius: 16px;
+  background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.2) 100%);
   pointer-events: none;
 }
 
 .shortcut-circle span {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: clamp(0.6rem, 1.5vw, 0.72rem);
+  font-size: clamp(0.65rem, 1.5vw, 0.75rem);
   font-weight: 600;
   color: var(--cream);
   line-height: 1.3;
@@ -253,52 +252,151 @@ body {
   z-index: 1;
 }
 
+.shortcut-icon {
+  width: 32px;
+  height: 32px;
+  opacity: 0.35;
+  margin-bottom: 0.2rem;
+  position: relative;
+  z-index: 1;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+
+.shortcut-circle:hover .shortcut-icon {
+  opacity: 0.55;
+}
+
+.shortcut-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.shortcut-stat {
+  text-align: center;
+}
+
+.shortcut-stat-number {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--purple-light);
+  line-height: 1;
+}
+
+.shortcut-stat-label {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--cream-dim);
+  margin-top: 0.12rem;
+}
+
 .shortcut-circle:hover {
   border-color: var(--purple-light);
-  background: radial-gradient(circle at 35% 30%, rgba(155,77,186,0.28) 0%, rgba(123,45,142,0.1) 40%, var(--dark-card) 100%);
+  background: linear-gradient(160deg, rgba(155,77,186,0.18) 0%, rgba(123,45,142,0.22) 50%, var(--dark-card) 100%);
   box-shadow:
     0 12px 48px rgba(0,0,0,0.6),
-    0 0 40px rgba(123,45,142,0.25),
-    0 0 0 1px rgba(123,45,142,0.2),
+    0 0 40px rgba(123,45,142,0.3),
+    0 0 0 1px rgba(123,45,142,0.35),
     inset 0 1px 0 rgba(255,255,255,0.06);
-  transform: scale(1.08);
 }
 
 .shortcut-circle:active {
-  transform: scale(0.98);
+  transform: scale(0.97);
   transition: transform 0.1s;
 }
 
 @media (max-width: 768px) {
+  .hero {
+    padding: 1rem 1.25rem 1.5rem;
+  }
+  .hero-tagline {
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+  }
+  .shortcut-circles,
+  .hero-stats {
+    grid-template-columns: repeat(3, clamp(95px, 28vw, 120px));
+    gap: clamp(0.75rem, 3vw, 1.25rem);
+  }
   .shortcut-circle {
-    width: clamp(90px, 28vw, 120px);
-    height: clamp(90px, 28vw, 120px);
+    width: clamp(95px, 28vw, 120px);
+    height: clamp(95px, 28vw, 120px);
+    border-radius: 14px;
+    padding: 0.8rem;
+  }
+  .shortcut-circle::after {
+    border-radius: 14px;
+  }
+  .shortcut-icon {
+    width: 28px;
+    height: 28px;
+  }
+  .shortcut-circle span {
+    font-size: clamp(0.55rem, 1.7vw, 0.7rem);
+  }
+  .shortcut-item {
+    gap: 0.45rem;
+  }
+  .shortcut-stat-number {
+    font-size: 1.2rem;
+  }
+  .shortcut-stat-label {
+    font-size: 0.55rem;
   }
 }
 
 .hero-stats {
-  display: flex;
-  gap: 3rem;
+  display: grid;
+  grid-template-columns: repeat(3, clamp(120px, 20vw, 150px));
+  gap: clamp(1rem, 4vw, 2.5rem);
   justify-content: center;
-  flex-wrap: wrap;
-  animation: fadeUp 1s 3s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .stat { text-align: center; }
 
 .stat-number {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 2.4rem;
+  font-size: 3rem;
   font-weight: 700;
   color: var(--purple-light);
 }
 
 .stat-label {
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
   color: var(--cream-dim);
   margin-top: 0.25rem;
+}
+
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-video--done {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hero-content-wrapper {
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s;
+}
+
+.intro-done .hero-content-wrapper {
+  opacity: 1;
 }
 
 .scroll-cue {
@@ -328,47 +426,6 @@ body {
 
 .logo-reveal {
   animation: logoReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-/* AWARD TROPHY */
-.award-trophy {
-  display: flex;
-  justify-content: center;
-  padding: 3rem 2rem 1.5rem;
-  position: relative;
-}
-
-.award-trophy::after {
-  content: '';
-  position: absolute;
-  bottom: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 280px;
-  height: 60px;
-  background: radial-gradient(ellipse 60% 100% at 50% 100%, rgba(201,168,76,0.25) 0%, rgba(201,168,76,0.08) 40%, transparent 100%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.award-trophy img {
-  height: 180px;
-  width: auto;
-  display: block;
-  border-radius: 12px;
-  border: 1px solid rgba(201,168,76,0.2);
-  box-shadow: 0 8px 40px rgba(201,168,76,0.1), 0 0 80px rgba(123,45,142,0.06);
-  filter: saturate(1.05);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.award-trophy img:hover {
-  transform: scale(1.04);
-}
-
-@media (max-width: 768px) {
-  .award-trophy { padding: 2rem 1.25rem 1rem; }
-  .award-trophy img { height: 140px; }
 }
 
 /* AWARDS MARQUEE */
@@ -1075,6 +1132,42 @@ footer {
   50% { box-shadow: 0 4px 28px rgba(37,211,102,0.55); }
 }
 
+/* SCROLL TO TOP */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 50;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--dark-border);
+  background: var(--dark-card);
+  color: var(--cream-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease, background 0.3s, border-color 0.3s;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+}
+
+.scroll-top-btn.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.scroll-top-btn:hover {
+  background: rgba(123,45,142,0.15);
+  border-color: var(--purple);
+  color: var(--cream);
+  transform: scale(1.1);
+}
+
 /* FIX PHOTO ORIENTATION */
 .pcard-slide img {
   image-orientation: from-image;
@@ -1082,7 +1175,7 @@ footer {
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
-  .hero-stats { gap: 2rem; }
+  .hero-stats { gap: clamp(0.5rem, 2vw, 1rem); }
   section { padding: 4rem 1.25rem; }
   .area-card { padding: 1.8rem; }
   .video-card { gap: 0.5rem; }

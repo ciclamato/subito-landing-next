@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Hero from "./sections/Hero";
 import Awards from "./sections/Awards";
 import About from "./sections/About";
@@ -11,6 +11,8 @@ import PortfolioVideos from "./sections/PortfolioVideos";
 import Footer from "./sections/Footer";
 
 export default function Home() {
+  const [showTopBtn, setShowTopBtn] = useState(false);
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -21,8 +23,17 @@ export default function Home() {
       { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
     );
     document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+
+    const onScroll = () => setShowTopBtn(window.scrollY > 600);
+    window.addEventListener("scroll", onScroll);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
+
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
     <main>
@@ -34,6 +45,17 @@ export default function Home() {
       <Projects />
       <PortfolioVideos />
       <Footer />
+      <button
+        type="button"
+        onClick={scrollToTop}
+        className={`scroll-top-btn${showTopBtn ? " visible" : ""}`}
+        aria-label="Volver arriba"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" width="18" height="18">
+          <polyline points="18 15 12 9 6 15"/>
+        </svg>
+      </button>
+
       <a
         href="https://wa.me/59899504809"
         target="_blank"

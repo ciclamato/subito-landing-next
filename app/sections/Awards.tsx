@@ -18,14 +18,7 @@ export default function Awards() {
   }, []);
 
   return (
-    <>
-      <div className="award-trophy reveal">
-        <img
-          src="/images/premio.png"
-          alt="Premio SOL 2024 — Innovación Tecnológica en Turismo — CAMTUR"
-        />
-      </div>
-      <div className="awards-marquee">
+    <div className="awards-marquee">
         <div className="marquee-track">
           {awards.map((award, i) => (
             <span key={i}>
@@ -64,6 +57,5 @@ export default function Awards() {
           ))}
         </div>
       </div>
-    </>
   );
 }
