@@ -2,7 +2,6 @@
 
 import { useEffect } from "react";
 import { awards } from "../data";
-import TiltCard from "../components/TiltCard";
 
 export default function Awards() {
   useEffect(() => {
@@ -21,13 +20,10 @@ export default function Awards() {
   return (
     <>
       <div className="award-trophy reveal">
-        <TiltCard>
-          <img
-            src="/images/premio.png"
-            alt="Premio SOL 2024"
-            className="award-trophy-img"
-          />
-        </TiltCard>
+        <img
+          src="/images/premio.png"
+          alt="Premio SOL 2024 — Innovación Tecnológica en Turismo — CAMTUR"
+        />
       </div>
       <div className="awards-marquee">
         <div className="marquee-track">

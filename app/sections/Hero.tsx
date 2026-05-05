@@ -15,20 +15,25 @@ export default function Hero() {
       <div className="hero-grid"></div>
       <div className="hero-content">
         <motion.div
+          className="logo-brand"
           initial={{ opacity: 0, scale: 0.8, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-          style={{ marginBottom: "2.5rem" }}
+          style={{ marginBottom: "2rem" }}
         >
           <img
             src="/images/simbolo-subito-negativo.png"
             alt="Súbito Red"
-            style={{ height: "clamp(90px, 15vw, 140px)", width: "auto", display: "block", margin: "0 auto" }}
+            className="logo-brand-icon"
           />
-          <p className="hero-claim">
-            Reinventamos la forma<br />de contar historias
-          </p>
+          <div className="logo-brand-text">
+            <span className="logo-brand-left">SÚBITO</span>
+            <span className="logo-brand-right">RED</span>
+          </div>
         </motion.div>
+        <p className="hero-claim">
+          Reinventamos la forma<br />de contar historias
+        </p>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
