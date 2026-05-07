@@ -1,5 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <rect x="3" y="3" width="14" height="4.5" rx="2.25" fill="#F0EDE8" opacity="0.9"/>
-  <rect x="5" y="10" width="10" height="3.5" rx="1.75" fill="#9B4DBA" opacity="0.8"/>
-  <rect x="7" y="16" width="7" height="2.5" rx="1.25" fill="#F0EDE8" opacity="0.65"/>
+  <!-- Holograma / Esfera Digital (Transmedia) -->
+  <circle cx="12" cy="8" r="4.5" fill="#9B4DBA" opacity="0.9"/>
+  <circle cx="12" cy="8" r="6.5" stroke="#9B4DBA" stroke-width="1.5" opacity="0.5" stroke-dasharray="2 2"/>
+  
+  <!-- Pedestal / Museo (Físico) -->
+  <path d="M7 17 L17 17 L19 21 L5 21 Z" fill="#F0EDE8" opacity="0.85"/>
+  <rect x="9" y="15" width="6" height="2" fill="#F0EDE8" opacity="0.6"/>
 </svg>
