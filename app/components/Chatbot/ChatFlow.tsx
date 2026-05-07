@@ -137,8 +137,8 @@ export default function ChatFlow({ isOpen }: ChatFlowProps) {
             </motion.div>
           )}
 
-          {step === 'MOOD_ASK' && (
-            <motion.div key="moodOptions" className="mood-options" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, scale: 0.9 }}>
+          {step === 'MOOD_ASK' && inputValue.length === 0 && (
+            <motion.div key="moodOptions" className="mood-options" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, scale: 0.9, height: 0, overflow: 'hidden' }}>
               {MOODS.map(m => (
                 <button key={m.id} className="mood-btn" onClick={() => handleMoodSelect(m.id as MoodType)} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
                   <span dangerouslySetInnerHTML={{ __html: m.svg }} style={{ color: m.color }} />
@@ -166,8 +166,8 @@ export default function ChatFlow({ isOpen }: ChatFlowProps) {
             </motion.div>
           )}
 
-          {step === 'CIRCUIT_MENU' && (
-            <motion.div key="circuitOptions" className="circuit-options" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
+          {step === 'CIRCUIT_MENU' && inputValue.length === 0 && (
+            <motion.div key="circuitOptions" className="circuit-options" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, height: 0, overflow: 'hidden' }}>
               {CIRCUITS.map(c => (
                 <button key={c.id} className="circuit-btn" onClick={() => handleCircuitSelect(c)} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                   <span dangerouslySetInnerHTML={{ __html: c.svg }} style={{ display: 'flex', color: 'var(--purple-light)' }} />
