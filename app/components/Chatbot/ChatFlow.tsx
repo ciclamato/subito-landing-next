@@ -166,7 +166,7 @@ export default function ChatFlow({ isOpen }: ChatFlowProps) {
             </motion.div>
           )}
 
-          {step === 'CIRCUIT_MENU' && inputValue.length === 0 && (
+          {step === 'CIRCUIT_MENU' && !isInputActive && (
             <motion.div key="circuitOptions" className="circuit-options" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, height: 0, overflow: 'hidden' }}>
               {CIRCUITS.map(c => (
                 <button key={c.id} className="circuit-btn" onClick={() => handleCircuitSelect(c)} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
@@ -238,10 +238,15 @@ export default function ChatFlow({ isOpen }: ChatFlowProps) {
       <div className="chat-input-area">
         <input 
           type="text" 
-          className="chat-input"
-          placeholder="Escribí un mensaje..." 
+          className="chat-input" 
+          placeholder="Escribe un mensaje..." 
           value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
+          onChange={(e) => {
+            setInputValue(e.target.value);
+            setIsTyping(true);
+          }}
+          onFocus={() => setIsInputFocused(true)}
+          onBlur={() => setIsInputFocused(false)}
           onKeyDown={(e) => {
              if(e.key === 'Enter') handleUserMessage();
           }}
