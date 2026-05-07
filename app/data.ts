@@ -32,7 +32,7 @@ export const awards = [
   },
   {
     name: "Premio FIDI Tecnología",
-    detail: "DestinosPlus · Rio de Janeiro, 2026",
+    detail: "DestinoPLUS · Rio de Janeiro, 2026",
     status: "finalist" as const,
   },
   {
@@ -84,7 +84,7 @@ export const areas = [
     description:
       "Motor tecnológico para convertir territorios en Destinos Turísticos Inteligentes (DTI). Nuestra suite cubre entre el 60% y 70% de los indicadores exigidos por certificaciones como SEGITTUR.",
     image: "/images/next-ssmart-solutions.png",
-    tags: ["DTI Insight", "DestinosPlus", "DestinosPass", "CRM Smart", "TurboxGo"],
+    tags: ["DTI Insight", "DestinoPLUS", "DestinosPass", "CRM Smart", "TurboxGo"],
   },
   {
     title: "Fundación Patrimonio Público Cultura",
@@ -103,7 +103,7 @@ export const dtiProducts = [
     icon: "/images/dti.svg",
   },
   {
-    name: "DestinosPlus",
+    name: "DestinoPLUS",
     badge: "B2C · IA Empática",
     desc: "Itinerarios vivos con un asistente de IA que adapta la experiencia en tiempo real según clima, horarios, eventualidades y estado de ánimo del viajero.",
     icon: "/images/destino-plus.svg",
