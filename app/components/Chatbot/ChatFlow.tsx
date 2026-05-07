@@ -25,7 +25,10 @@ export default function ChatFlow({ isOpen }: ChatFlowProps) {
   const [botReaction, setBotReaction] = useState<'wow' | 'happy' | null>(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [drawerItems, setDrawerItems] = useState<DrawerItem[]>([]);
+  const [isInputFocused, setIsInputFocused] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+  
+  const isInputActive = inputValue.length > 0 || isInputFocused;
   
   // Fake typing effect for user
   useEffect(() => {
@@ -121,7 +124,7 @@ export default function ChatFlow({ isOpen }: ChatFlowProps) {
   return (
     <div className="chat-flow-container">
       <div className="chat-header">
-        <EmojiAvatar mood={mood} size={80} isUserTyping={isUserTyping} reaction={botReaction} />
+        <EmojiAvatar mood={mood} size={80} isUserTyping={isUserTyping || isInputFocused} reaction={botReaction} />
       </div>
 
       <div className="chat-messages" ref={scrollRef}>
@@ -137,7 +140,7 @@ export default function ChatFlow({ isOpen }: ChatFlowProps) {
             </motion.div>
           )}
 
-          {step === 'MOOD_ASK' && inputValue.length === 0 && (
+          {step === 'MOOD_ASK' && !isInputActive && (
             <motion.div key="moodOptions" className="mood-options" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, scale: 0.9, height: 0, overflow: 'hidden' }}>
               {MOODS.map(m => (
                 <button key={m.id} className="mood-btn" onClick={() => handleMoodSelect(m.id as MoodType)} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
